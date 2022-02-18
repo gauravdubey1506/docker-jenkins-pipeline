@@ -9,6 +9,7 @@ node {
 
   stage('Create Docker Image') {
     dir('webapp') {
+      withDockerRegistry([credentialsId: "dockerhub", url: "https://index.docker.io/v1/"]) {
       docker.build("dubeyg0692/docker-jenkins-pipeline:${env.BUILD_NUMBER}")
     }
   }
